@@ -7,13 +7,10 @@ session = boto3.Session(
 )
 
 # Conecta ao S3
-s3 = session.resource('s3', 'us-east-1')
+s3 = session.resource('s3')
 
-i = 1
 # Imprime buckets e seus arquivos
 for bucket in s3.buckets.all():
-    print("Nome do bucket:", bucket.name)
+    print("Bucket name:", bucket.name)
     for key in bucket.objects.all():
-        print(f'{i}.', key.key)
-        i+=1
-    i=1
+        print(f'\t', key.key)
